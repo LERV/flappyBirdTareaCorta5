@@ -2,6 +2,7 @@ package cr.ac.itcr.andreifuentes.flappybirdclase;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -10,6 +11,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import java.util.Random;
 
@@ -45,6 +49,11 @@ public class FlappyBird extends ApplicationAdapter {
 	Rectangle[] topPipes;
 	Rectangle[] bottomPipes;
 
+	//Para musica
+	private Music music_level1;
+
+
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -79,7 +88,16 @@ public class FlappyBird extends ApplicationAdapter {
 		font.setColor(Color.WHITE);
 		font.getData().setScale(10);
 
-		startGame();
+		//Para musica
+		music_level1 = Gdx.audio.newMusic(Gdx.files.internal("song.ogg"));
+		music_level1.setLooping(true);
+		music_level1.play();
+
+
+
+
+
+        startGame();
 	}
 
 	public void startGame(){
